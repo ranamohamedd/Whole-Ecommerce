@@ -1,0 +1,12 @@
+<div class="conatiner w-100 mx-auto p-5">
+    <div class="row  g-4 p-5"  >
+      <div class="col-md-3" *ngFor="let barndItem of allBrands">
+        <div class="card category-card">
+          <img class="img-fluid w-100 border-bottom"  [src]="barndItem.image">
+          <div class="card-body">
+            <p class="fw-bolder text-center">{{barndItem.name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

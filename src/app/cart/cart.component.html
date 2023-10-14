@@ -1,0 +1,57 @@
+<div class="container my-5 pt-5">
+    <h2>Cart Details:</h2>
+  
+    <div class="bg-main-light rounded-3 p-3 cinqFont" *ngIf="cartDetails?.data">
+      <div class="row border-bottom m-1" *ngFor="let product of cartDetails.data.products | filterProduct">
+        <div class="col-md-1">
+          <img [src]="product.product.imageCover" alt="" class="w-100" />
+        </div>
+  
+  
+  
+  
+  
+  
+        
+        <div class="col-md-9">
+          <div class="item">
+            <h4>{{ product.product.title }}</h4>
+            <p class="quatreColor fw-bold mb-0">
+              {{ product.product.category.name }}
+            </p>
+            <div class="d-flex align-items-center mb-3">
+              <p class="fw-bold mb-0">{{ product.price | currency }}</p>
+              <button (click)="deleteItem(product.product.id)" class="btn remove">
+                <i class="fa-regular fa-trash-can"></i> Remove
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-update" (click)="updateCount(product.count - 1, product.product.id)">
+            -
+          </button>
+          <span class="mx-2">{{ product.count }}</span>
+          <button class="btn btn-update" (click)="updateCount(product.count + 1, product.product.id)">
+            +
+          </button>
+        </div>
+      </div>
+  
+      <div class="d-flex justify-content-between m-4">
+        <h6>
+          Number of items:
+          <span class="quatreColor">{{ cartDetails.numOfCartItems }}</span>
+        </h6>
+        <h6>
+          Total price:
+          <span class="quatreColor">{{ cartDetails.data.totalCartPrice }}</span>
+        </h6>
+      </div>
+      <div class="d-flex justify-content-center m-3">
+        <button class="btn bg-main text-white check-out">
+          <a [routerLink]="['/checkout/',cartDetails.data._id]">Continue to pay</a>
+        </button>
+      </div>
+    </div>
+  </div>
